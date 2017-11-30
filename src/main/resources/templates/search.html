@@ -37,6 +37,17 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+    <p th:unless="${jobs} and ${jobs.size()}">No results</p>
+
+    <table th:each="job : ${jobs}" class="job-listing" th:fragment="table">
+
+        <tr th:each="entry : ${job.entrySet()}">
+            <td th:text="${#strings.capitalizeWords(entry.getKey())}"></td>
+            <td th:text="${entry.getValue()}"></td>
+        </tr>
+
+    </table>
+
 
 </div>
 
